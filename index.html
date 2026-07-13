@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal vecinal de Sevilleja de la Jara: actualidad, eventos y cuentas abiertas.">
+  <title>Sevilleja de la Jara · Portal vecinal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" id="inicio">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand-mark">SJ</span>
+      <span><strong>Sevilleja</strong><small>de la Jara</small></span>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-label="Abrir menú">☰</button>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="#inicio" class="active">Inicio</a><a href="#quienes">Quiénes somos</a><a href="#blog">Blog</a><a href="#eventos">Eventos</a><a href="#balance">Balance</a><a href="#contacto">Contacto</a>
+    </nav>
+    <button class="btn btn-dark admin-open">Área privada <span>↗</span></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img src="assets/sevilleja-hero.png" alt="Paisaje rural de Sevilleja de la Jara al atardecer">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <span class="eyebrow light">NUESTRA TIERRA · NUESTRA GENTE</span>
+        <h1>Lo que nos une,<br><em>más cerca.</em></h1>
+        <p>Actualidad, encuentros y cuentas claras de una comunidad que se mueve junta.</p>
+        <div class="hero-actions"><a class="btn btn-cream" href="#eventos">Ver próximos eventos <span>→</span></a><a class="text-link" href="#quienes">Conócenos ↓</a></div>
+      </div>
+      <div class="hero-fact"><small>EN EL CORAZÓN DE</small><strong>La Jara</strong><span>Toledo · Castilla-La Mancha</span></div>
+    </section>
+
+    <section class="intro section" id="quienes">
+      <div><span class="eyebrow">QUIÉNES SOMOS</span><h2>Un pueblo con<br><em>mucho que contar.</em></h2></div>
+      <div class="intro-copy"><p>Somos una comunidad abierta, orgullosa de sus raíces y comprometida con el futuro de Sevilleja de la Jara.</p><p>Este espacio nace para acercar la vida del pueblo a todas las personas: las que están, las que vuelven y las que nunca se fueron del todo.</p><a href="#contacto" class="arrow-link">Hablemos <span>→</span></a></div>
+      <div class="stat"><strong>01</strong><span>Una comunidad</span><small>MUCHAS HISTORIAS COMPARTIDAS</small></div>
+    </section>
+
+    <section class="blog-section section" id="blog">
+      <div class="section-heading"><div><span class="eyebrow">AL DÍA EN SEVILLEJA</span><h2>Historias de aquí</h2></div><span class="hand-note">Lo que pasa,<br>contado por nosotros ↘</span></div>
+      <div id="blogGrid" class="blog-grid"></div>
+    </section>
+
+    <section class="events-section section" id="eventos">
+      <div class="section-heading inverse"><div><span class="eyebrow light">AGENDA DEL PUEBLO</span><h2>Nos vemos aquí</h2></div><p>Apúntate en menos de un minuto.<br>Sin contraseñas, sin complicaciones.</p></div>
+      <div id="eventsList" class="events-list"></div>
+    </section>
+
+    <section class="balance-section section" id="balance">
+      <div class="balance-copy"><span class="eyebrow">CUENTAS ABIERTAS</span><h2>Claridad en<br><em>cada cifra.</em></h2><p>Compartimos de forma sencilla los ingresos y gastos de las actividades de nuestra comunidad.</p><div class="balance-legend"><span><i class="dot income"></i> Ingresos</span><span><i class="dot expense"></i> Gastos</span></div></div>
+      <div class="balance-card">
+        <div class="balance-top"><span>Balance actual</span><small id="balancePeriod">AÑO 2026</small></div>
+        <strong id="netBalance">0,00 €</strong>
+        <div class="bar"><i id="incomeBar"></i><i id="expenseBar"></i></div>
+        <div class="balance-numbers"><span><small>INGRESOS</small><b id="totalIncome">0,00 €</b></span><span><small>GASTOS</small><b id="totalExpense">0,00 €</b></span></div>
+        <p id="balanceMessage">Datos actualizados por la administración.</p>
+      </div>
+    </section>
+
+    <section class="contact-section section" id="contacto">
+      <div><span class="eyebrow light">CONTACTO</span><h2>¿Tienes algo<br>que contarnos?</h2><p>Una propuesta, una historia o una duda.<br>Estamos al otro lado.</p></div>
+      <form id="contactForm" class="contact-form"><label>Tu nombre<input required name="name" placeholder="Nombre y apellidos"></label><label>Tu correo<input required type="email" name="email" placeholder="tu@email.com"></label><label>Mensaje<textarea required name="message" placeholder="Cuéntanos..."></textarea></label><button class="btn btn-cream" type="submit">Enviar mensaje <span>→</span></button></form>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#inicio"><span class="brand-mark">SJ</span><span><strong>Sevilleja</strong><small>de la Jara</small></span></a><p>Un lugar para encontrarnos.</p><div><span>© <span id="year"></span> Sevilleja de la Jara</span><button class="link-button admin-open">Acceso administración</button></div></footer>
+
+  <div class="modal" id="signupModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="modal-card"><button class="modal-close" data-close aria-label="Cerrar">×</button><span class="eyebrow">INSCRIPCIÓN</span><h3 id="signupTitle">Apúntate al evento</h3><p>Solo necesitamos tres datos. No tendrás que crear una cuenta.</p><form id="signupForm"><input type="hidden" name="eventId"><div class="form-grid"><label>Nombre<input name="firstName" required autocomplete="given-name"></label><label>Apellidos<input name="lastName" required autocomplete="family-name"></label></div><label>Fecha de nacimiento<input type="date" name="birthDate" required></label><label class="check"><input type="checkbox" required> <span>Acepto el uso de estos datos únicamente para gestionar mi participación en el evento.</span></label><button class="btn btn-dark full" type="submit">Confirmar inscripción</button></form></section></div>
+
+  <div class="modal" id="adminModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="modal-card login-card"><button class="modal-close" data-close aria-label="Cerrar">×</button><span class="brand-mark large">SJ</span><span class="eyebrow">ÁREA PRIVADA</span><h3>Hola de nuevo</h3><p>Acceso exclusivo para administración.</p><form id="loginForm"><label>Usuario<input name="username" required autocomplete="username"></label><label>Contraseña<input type="password" name="password" required autocomplete="current-password"></label><p class="login-hint">Demo: admin / Sevilleja2026</p><button class="btn btn-dark full" type="submit">Entrar al panel</button></form></section></div>
+
+  <div id="adminPanel" class="admin-panel" aria-hidden="true">
+    <aside><a class="brand admin-brand" href="#"><span class="brand-mark">SJ</span><span><strong>Sevilleja</strong><small>Administración</small></span></a><nav><button class="admin-tab active" data-tab="overview">⌂ Resumen</button><button class="admin-tab" data-tab="posts">✎ Blog</button><button class="admin-tab" data-tab="events">◫ Eventos</button><button class="admin-tab" data-tab="attendees">♙ Inscripciones</button><button class="admin-tab" data-tab="accounts">◒ Balance</button></nav><button id="logoutBtn" class="logout">Cerrar sesión →</button></aside>
+    <main class="admin-main"><header><div><small>PANEL DE ADMINISTRACIÓN</small><h2 id="adminTitle">Buenos días</h2></div><button id="closeAdmin" class="btn btn-outline">Ver web pública ↗</button></header><div id="adminContent"></div></main>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
