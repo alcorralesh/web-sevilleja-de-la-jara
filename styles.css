@@ -27,3 +27,10 @@
 .message-actions .btn{padding:8px 12px;font-size:11px}
 .mailbox-empty{background:#fff}
 @media(max-width:700px){.message-head{flex-direction:column}.message-actions{align-items:stretch}.message-actions>*{text-align:center;justify-content:center}}
+/* Control de aforo de eventos */
+.event-info .event-capacity{display:block;margin-top:9px;color:#d7e0da;font-size:10px;font-weight:700;letter-spacing:.05em}
+.event-info .event-capacity.full{color:#f0a98f}
+.event-row.is-full{background:rgba(255,255,255,.025)}
+.event-full{background:rgba(255,255,255,.1);color:#bdc9c3;cursor:not-allowed}
+.capacity-count{display:inline-block;padding:5px 8px;border-radius:2px;background:#e7ede9;color:var(--green);font-size:10px;font-weight:700}
+.capacity-count.full{background:#f5e3dd;color:var(--danger)}
