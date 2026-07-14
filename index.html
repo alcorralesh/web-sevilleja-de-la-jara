@@ -81,7 +81,7 @@
 
   <div class="modal" id="signupModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="modal-card"><button class="modal-close" data-close aria-label="Cerrar">×</button><span class="eyebrow">INSCRIPCIÓN</span><h3 id="signupTitle">Apúntate al evento</h3><p>Solo necesitamos tres datos. No tendrás que crear una cuenta.</p><form id="signupForm"><input type="hidden" name="eventId"><div class="form-grid"><label>Nombre<input name="firstName" required autocomplete="given-name"></label><label>Apellidos<input name="lastName" required autocomplete="family-name"></label></div><label>Fecha de nacimiento<input type="date" name="birthDate" required></label><label class="check"><input type="checkbox" required> <span>Acepto el uso de estos datos únicamente para gestionar mi participación en el evento.</span></label><button class="btn btn-dark full" type="submit">Confirmar inscripción</button></form></section></div>
 
-  <div class="modal" id="adminModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="modal-card login-card"><button class="modal-close" data-close aria-label="Cerrar">×</button><img class="login-logo" src="assets/logo-acr-la-jara.png" alt="Logotipo de A.C.R. La Jara"><span class="eyebrow">ÁREA PRIVADA</span><h3>Hola de nuevo</h3><p>Acceso exclusivo para administración.</p><form id="loginForm"><label>Usuario<input name="username" required autocomplete="username"></label><label>Contraseña<input type="password" name="password" required autocomplete="current-password"></label><p class="login-hint">Demo: admin / Sevilleja2026</p><button class="btn btn-dark full" type="submit">Entrar al panel</button></form></section></div>
+  <div class="modal" id="adminModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="modal-card login-card"><button class="modal-close" data-close aria-label="Cerrar">×</button><img class="login-logo" src="assets/logo-acr-la-jara.png" alt="Logotipo de A.C.R. La Jara"><span class="eyebrow">ÁREA PRIVADA</span><h3>Hola de nuevo</h3><p>Acceso exclusivo para administración.</p><form id="loginForm"><label>Correo electrónico<input type="email" name="email" required autocomplete="username"></label><label>Contraseña<input type="password" name="password" required autocomplete="current-password"></label><p class="login-hint" id="loginHint">Accede con el usuario administrador de Supabase.</p><button class="btn btn-dark full" type="submit">Entrar al panel</button></form></section></div>
 
   <div id="adminPanel" class="admin-panel" aria-hidden="true">
     <aside><a class="brand admin-brand" href="#"><img class="brand-logo" src="assets/logo-acr-la-jara.png" alt="Logotipo de A.C.R. La Jara"><span><strong>Sevilleja</strong><small>Administración</small></span></a><nav><button class="admin-tab active" data-tab="overview">⌂ Resumen</button><button class="admin-tab" data-tab="messages">✉ Buzón <span id="messageBadge" class="nav-badge"></span></button><button class="admin-tab" data-tab="posts">✎ Blog</button><button class="admin-tab" data-tab="events">◫ Eventos</button><button class="admin-tab" data-tab="attendees">♙ Inscripciones</button><button class="admin-tab" data-tab="accounts">◒ Balance</button></nav><button id="logoutBtn" class="logout">Cerrar sesión →</button></aside>
@@ -89,6 +89,9 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="supabase-client.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

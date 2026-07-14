@@ -7,7 +7,8 @@ const defaultTransactions=[
   {id:'t4',type:'expense',concept:'Sonido y escenario',amount:940,date:'2026-05-18'}
 ];
 function loadTransactions(){try{return JSON.parse(localStorage.getItem(KEY)||'{}').transactions||defaultTransactions}catch{return defaultTransactions}}
-const transactions=loadTransactions();
+let transactions=loadTransactions();
+const database=window.SevillejaDB;
 const money=value=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(value);
 const dateLong=date=>new Intl.DateTimeFormat('es-ES',{day:'numeric',month:'long',year:'numeric'}).format(new Date(date+'T12:00:00'));
 const escapeHTML=value=>String(value||'').replace(/[&<>'"]/g,character=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
@@ -27,3 +28,4 @@ $('#balanceFilter').addEventListener('submit',event=>{event.preventDefault();ren
 $('#clearFilter').addEventListener('click',()=>{$('#balanceFilter').reset();render()});
 $('#year').textContent=new Date().getFullYear();
 render();
+if(database?.configured){database.getTransactions().then(items=>{transactions=items;render()}).catch(error=>{console.error(error);$('#filterMessage').textContent='No se pudieron cargar las cuentas compartidas.'})}

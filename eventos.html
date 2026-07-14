@@ -35,6 +35,9 @@
 
   <div class="modal" id="signupModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="modal-card"><button class="modal-close" data-close aria-label="Cerrar">×</button><span class="eyebrow">INSCRIPCIÓN</span><h3 id="signupTitle">Apúntate al evento</h3><p>Solo necesitamos tres datos. No tendrás que crear una cuenta.</p><form id="signupForm"><input type="hidden" name="eventId"><div class="form-grid"><label>Nombre<input name="firstName" required autocomplete="given-name"></label><label>Apellidos<input name="lastName" required autocomplete="family-name"></label></div><label>Fecha de nacimiento<input type="date" name="birthDate" required></label><label class="check"><input type="checkbox" required> <span>Acepto el uso de estos datos únicamente para gestionar mi participación en el evento.</span></label><button class="btn btn-dark full" type="submit">Confirmar inscripción</button></form></section></div>
   <div id="toast" class="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="supabase-client.js"></script>
   <script src="eventos.js"></script>
 </body>
 </html>

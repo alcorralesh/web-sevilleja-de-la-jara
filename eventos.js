@@ -6,6 +6,7 @@ const defaultEvents=[
   {id:'e3',title:'Taller de memoria y fotografías',date:'2026-09-05',time:'11:00',place:'Centro social',description:'Trae tus fotos antiguas y comparte su historia.',capacity:25}
 ];
 let stored=load();
+const database=window.SevillejaDB;
 function load(){try{const saved=JSON.parse(localStorage.getItem(KEY)||'{}');return {...saved,events:(saved.events||defaultEvents).map(e=>({...e,capacity:Number(e.capacity)||50})),signups:saved.signups||[]}}catch{return {events:defaultEvents,signups:[]}}}
 function save(){localStorage.setItem(KEY,JSON.stringify(stored));renderEvents()}
 const escapeHTML=s=>String(s||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
@@ -17,7 +18,7 @@ function renderEvents(){
   $('#eventCount').textContent=`${events.length} evento${events.length===1?'':'s'}`;
   $('#allEventsList').innerHTML=events.length?events.map(event=>{
     const date=new Date(event.date+'T12:00:00');
-    const enrolled=stored.signups.filter(signup=>signup.eventId===event.id).length;
+    const enrolled=database?.configured?Number(event.registered_count||0):stored.signups.filter(signup=>signup.eventId===event.id).length;
     const capacity=Number(event.capacity)||50;
     const remaining=Math.max(0,capacity-enrolled);
     const full=enrolled>=capacity;
@@ -27,6 +28,7 @@ function renderEvents(){
 function openSignup(eventId){const event=stored.events.find(item=>item.id===eventId);if(!event)return;$('#signupTitle').textContent=event.title;$('#signupForm').eventId.value=event.id;$('#signupModal').classList.add('open');$('#signupModal').setAttribute('aria-hidden','false')}
 function closeModal(){$('#signupModal').classList.remove('open');$('#signupModal').setAttribute('aria-hidden','true')}
 document.addEventListener('click',event=>{const signup=event.target.closest('.signup-open');if(signup)openSignup(signup.dataset.id);const calendar=event.target.closest('.calendar-add');if(calendar){const selected=stored.events.find(item=>item.id===calendar.dataset.id);if(selected)addEventToCalendar(selected)}if(event.target.closest('[data-close]'))closeModal()});
-$('#signupForm').addEventListener('submit',event=>{event.preventDefault();const form=new FormData(event.target),selected=stored.events.find(item=>item.id===form.get('eventId')),enrolled=stored.signups.filter(item=>item.eventId===selected?.id).length;if(!selected||enrolled>=Number(selected.capacity)){closeModal();renderEvents();toast('Lo sentimos, el evento ya ha completado su aforo.');return}stored.signups.push({id:crypto.randomUUID(),eventId:selected.id,firstName:form.get('firstName').trim(),lastName:form.get('lastName').trim(),birthDate:form.get('birthDate'),createdAt:new Date().toISOString()});save();event.target.reset();closeModal();toast('¡Inscripción confirmada! Nos vemos allí.')});
+$('#signupForm').addEventListener('submit',async event=>{event.preventDefault();const form=new FormData(event.target),selected=stored.events.find(item=>item.id===form.get('eventId')),enrolled=database?.configured?Number(selected?.registered_count||0):stored.signups.filter(item=>item.eventId===selected?.id).length;if(!selected||enrolled>=Number(selected.capacity)){closeModal();renderEvents();toast('Lo sentimos, el evento ya ha completado su aforo.');return}const payload={eventId:selected.id,firstName:form.get('firstName').trim(),lastName:form.get('lastName').trim(),birthDate:form.get('birthDate')};try{if(database?.configured){await database.registerEvent(payload);stored.events=await database.getEvents()}else{stored.signups.push({id:crypto.randomUUID(),...payload,createdAt:new Date().toISOString()});save()}event.target.reset();closeModal();renderEvents();toast('¡Inscripción confirmada! Nos vemos allí.')}catch(error){console.error(error);closeModal();toast(String(error.message||'').includes('EVENT_FULL')?'Lo sentimos, el evento ya ha completado su aforo.':'No se pudo completar la inscripción. Inténtalo de nuevo.')}});
 $('#year').textContent=new Date().getFullYear();
 renderEvents();
+if(database?.configured){database.getEvents().then(events=>{stored.events=events;renderEvents()}).catch(error=>{console.error(error);toast('No se pudieron cargar los eventos compartidos.')})}
