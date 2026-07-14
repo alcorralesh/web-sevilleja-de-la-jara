@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agenda completa de eventos de Sevilleja de la Jara.">
+  <title>Eventos · Sevilleja de la Jara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="events-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Volver al inicio">
+      <img class="brand-logo" src="assets/logo-acr-la-jara.png" alt="Logotipo de A.C.R. La Jara">
+      <span><strong>Sevilleja</strong><small>de la Jara</small></span>
+    </a>
+    <nav class="events-page-nav"><a href="index.html">← Volver a la web</a><a class="instagram-button" href="https://www.instagram.com/a.c.rlajara/" target="_blank" rel="noopener noreferrer">◎ Instagram</a></nav>
+  </header>
+
+  <main>
+    <section class="events-page-hero">
+      <span class="eyebrow light">AGENDA COMPLETA</span>
+      <h1>Todos los eventos<br><em>disponibles.</em></h1>
+      <p>Encuentra tu próximo plan y reserva tu plaza. Solo necesitas nombre, apellidos y fecha de nacimiento.</p>
+    </section>
+    <section class="events-catalog section">
+      <div class="catalog-heading"><div><span class="eyebrow">AGENDA DEL PUEBLO</span><h2>Próximos encuentros</h2></div><span id="eventCount" class="event-count"></span></div>
+      <div id="allEventsList" class="events-list full-events-list"></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="index.html"><img class="brand-logo" src="assets/logo-acr-la-jara.png" alt="Logotipo de A.C.R. La Jara"><span><strong>Sevilleja</strong><small>de la Jara</small></span></a><p>Un lugar para encontrarnos.</p><div><a class="footer-instagram" href="https://www.instagram.com/a.c.rlajara/" target="_blank" rel="noopener noreferrer">Instagram · @a.c.rlajara ↗</a><span>© <span id="year"></span> Sevilleja de la Jara</span></div></footer>
+
+  <div class="modal" id="signupModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="modal-card"><button class="modal-close" data-close aria-label="Cerrar">×</button><span class="eyebrow">INSCRIPCIÓN</span><h3 id="signupTitle">Apúntate al evento</h3><p>Solo necesitamos tres datos. No tendrás que crear una cuenta.</p><form id="signupForm"><input type="hidden" name="eventId"><div class="form-grid"><label>Nombre<input name="firstName" required autocomplete="given-name"></label><label>Apellidos<input name="lastName" required autocomplete="family-name"></label></div><label>Fecha de nacimiento<input type="date" name="birthDate" required></label><label class="check"><input type="checkbox" required> <span>Acepto el uso de estos datos únicamente para gestionar mi participación en el evento.</span></label><button class="btn btn-dark full" type="submit">Confirmar inscripción</button></form></section></div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="eventos.js"></script>
+</body>
+</html>
