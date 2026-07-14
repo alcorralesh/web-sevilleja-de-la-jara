@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Todas las historias y noticias de Sevilleja de la Jara.">
+  <title>Blog · Sevilleja de la Jara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="blog-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Volver al inicio">
+      <img class="brand-logo" src="assets/logo-acr-la-jara.png" alt="Logotipo de A.C.R. La Jara">
+      <span><strong>Sevilleja</strong><small>de la Jara</small></span>
+    </a>
+    <nav class="events-page-nav"><a href="index.html">← Volver a la web</a><a class="instagram-button" href="https://www.instagram.com/a.c.rlajara/" target="_blank" rel="noopener noreferrer">◎ Instagram</a></nav>
+  </header>
+
+  <main>
+    <section class="blog-page-hero">
+      <span class="eyebrow light">HISTORIAS DE AQUÍ</span>
+      <h1>Todo lo que pasa,<br><em>contado por nosotros.</em></h1>
+      <p>Actualidad, memoria y vida cotidiana de Sevilleja de la Jara, reunidas en un mismo lugar.</p>
+    </section>
+    <section class="blog-catalog section">
+      <div class="catalog-heading"><div><span class="eyebrow">TODAS LAS ENTRADAS</span><h2>El blog de Sevilleja</h2></div><span id="postCount" class="event-count"></span></div>
+      <div id="allPostsGrid" class="blog-grid full-blog-grid"></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="index.html"><img class="brand-logo" src="assets/logo-acr-la-jara.png" alt="Logotipo de A.C.R. La Jara"><span><strong>Sevilleja</strong><small>de la Jara</small></span></a><p>Un lugar para encontrarnos.</p><div><a class="footer-instagram" href="https://www.instagram.com/a.c.rlajara/" target="_blank" rel="noopener noreferrer">Instagram · @a.c.rlajara ↗</a><span>© <span id="year"></span> Sevilleja de la Jara</span></div></footer>
+  <script src="blog.js"></script>
+</body>
+</html>
