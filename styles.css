@@ -68,3 +68,11 @@
 .full-blog-grid .post-body p{display:block;overflow:visible;color:#525b56;-webkit-line-clamp:unset}
 .full-blog-grid>.empty{grid-column:1/-1;background:var(--paper)}
 @media(max-width:700px){.blog-page-hero{padding:75px 7vw}.all-blog-action .btn{width:100%}.full-blog-grid .post-image{height:220px}}
+/* Integración con el calendario del dispositivo */
+.event-actions{display:flex;flex-direction:column;gap:8px;min-width:180px}
+.event-actions .btn{width:100%;padding:11px 14px;white-space:nowrap}
+.btn-calendar{border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff}
+.btn-calendar:hover{border-color:#e5c376;color:#e5c376}
+.full-events-list .btn-calendar{border-color:var(--line);background:#fff;color:var(--ink)}
+.full-events-list .btn-calendar:hover{border-color:var(--terra);color:var(--terra)}
+@media(max-width:700px){.event-actions{grid-column:2;width:100%;min-width:0}.event-actions .btn{grid-column:auto}}
