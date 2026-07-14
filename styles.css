@@ -26,7 +26,11 @@
 .message-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-top:15px;border-top:1px solid #eee}
 .message-actions .btn{padding:8px 12px;font-size:11px}
 .mailbox-empty{background:#fff}
-@media(max-width:700px){.message-head{flex-direction:column}.message-actions{align-items:stretch}.message-actions>*{text-align:center;justify-content:center}}
+.admin-title-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+.admin-refresh{gap:8px;min-width:118px}
+.admin-refresh:disabled{cursor:wait;opacity:.65}
+.admin-section-title-compact{padding-top:0}
+@media(max-width:700px){.admin-section-title{align-items:flex-start;gap:12px;flex-wrap:wrap}.admin-title-actions{width:100%;justify-content:flex-start}.message-head{flex-direction:column}.message-actions{align-items:stretch}.message-actions>*{text-align:center;justify-content:center}}
 /* Control de aforo de eventos */
 .event-info .event-capacity{display:block;margin-top:9px;color:#d7e0da;font-size:10px;font-weight:700;letter-spacing:.05em}
 .event-info .event-capacity.full{color:#f0a98f}
